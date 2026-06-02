@@ -1,0 +1,44 @@
+# Gateway 路由规则（后续步骤使用，当前为预览）
+spring:
+  cloud:
+    gateway:
+      routes:
+        # ========== 认证服务 ==========
+        - id: auth-service
+          uri: lb://ai-medical-care-auth
+          predicates:
+            - Path=/api/auth/**
+          filters:
+            - StripPrefix=0
+
+        # ========== 用户服务（预览） ==========
+        - id: user-service
+          uri: lb://ai-medical-care-user
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=0
+
+        # ========== 健康数据服务（预览） ==========
+        - id: health-data-service
+          uri: lb://ai-medical-care-health-data
+          predicates:
+            - Path=/api/health/**
+          filters:
+            - StripPrefix=0
+
+        # ========== 目标服务（预览） ==========
+        - id: goal-service
+          uri: lb://ai-medical-care-goal
+          predicates:
+            - Path=/api/goal/**
+          filters:
+            - StripPrefix=0
+
+        # ========== AI Agent 服务（预览） ==========
+        - id: ai-agent-service
+          uri: lb://ai-medical-care-ai-agent
+          predicates:
+            - Path=/api/agent/**
+          filters:
+            - StripPrefix=0

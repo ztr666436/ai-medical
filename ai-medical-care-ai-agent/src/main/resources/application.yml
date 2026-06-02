@@ -1,0 +1,26 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: ai-medical-care-ai-agent
+  cloud:
+    nacos:
+      discovery:
+        enabled: false
+      config:
+        enabled: false
+  codec:
+    max-in-memory-size: 10MB
+
+ai:
+  deepseek:
+    api-key: sk-ba974f46f2ba4269add1e0e5b966aacd
+    base-url: https://api.deepseek.com
+    model: deepseek-reasoner
+    max-tokens: 4096
+    temperature: 0.7
+
+logging:
+  level:
+    com.medical.agent: debug
